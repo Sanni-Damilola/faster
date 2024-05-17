@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shipment Update</title>
     <link rel="stylesheet" href="../scss/style.css" />
+    <script>
+      if (!localStorage.getItem("userId")) {
+        window.location.href = "../404.html";
+      }
+    </script>
   </head>
   <body class="sidebarBody">
     <div class="navbar">
@@ -17,7 +22,7 @@
       <a href="./allorders.html" onclick="toggleSidebar(); setActiveLink(this);"
         >Home</a
       >
-      <a href="../index.html" onclick="toggleSidebar(); setActiveLink(this);"
+      <a onclick="logoutUser(); toggleSidebar(); setActiveLink(this);"
         >Logout</a
       >
     </div>
@@ -197,6 +202,10 @@
         });
 
         clickedLink.classList.add("active");
+      }
+      function logoutUser() {
+        localStorage.removeItem("userId");
+        window.location.href = "../index.html";
       }
     </script>
   </body>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../scss/style.css" />
+    <title>Admin Login</title>
+  </head>
+  <body>
+    <div class="login-container">
+      <h1>Admin Login</h1>
+      <form id="loginForm">
+        <div class="form-group">
+          <input
+            placeholder="Your Email"
+            type="email"
+            id="email"
+            name="email"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <input
+            placeholder="Your Password"
+            type="password"
+            id="password"
+            name="password"
+            required
+          />
+        </div>
+        <button type="submit">Login</button>
+      </form>
+      <a href="javascript:history.back()" class="back-button">Back</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      function loginUser(email, password) {
+        showLoading();
+
+        axios
+          .post("https://faster-mnuk.onrender.com/api/login", {
+            email,
+            password,
+          })
+          .then((response) => {
+            const data = response.data;
+            if (data.message === "Login successful") {
+              localStorage.setItem("userId", data.data);
+              showAlert("Login successful", "success");
+              setTimeout(() => {
+                window.location.href = "../admin/allorders.html";
+              }, 1000);
+            } else {
+              showAlert("Login failed: " + data.message, "error");
+            }
+          })
+          .catch((error) => {
+            showAlert(error?.response?.data?.message, "error");
+          })
+          .finally(() => {
+            hideLoading();
+          });
+      }
+
+      function showLoading() {
+        const loadingDiv = document.createElement("div");
+        loadingDiv.id = "loading";
+        loadingDiv.textContent = "Loading...";
+        document.body.appendChild(loadingDiv);
+      }
+
+      function hideLoading() {
+        const loadingDiv = document.getElementById("loading");
+        if (loadingDiv) {
+          loadingDiv.remove();
+        }
+      }
+
+      function showAlert(message, type) {
+        const alertDiv = document.createElement("div");
+        alertDiv.className = `alert ${type}`;
+        alertDiv.textContent = message;
+        document.body.appendChild(alertDiv);
+
+        setTimeout(() => {
+          alertDiv.remove();
+        }, 3000);
+      }
+
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+          loginUser(email, password);
+        });
+    </script>
+  </body>
+</html>
