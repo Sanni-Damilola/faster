@@ -1,11 +1,9 @@
-/******* Bootstrap Theming ********/
+$primary: #ff4800;
+$secondary: #f2f2f4;
+$light: #ffffff;
+$dark: #1f1f2e;
 
-$primary: #FF4800;
-$secondary: #F2F2F4;
-$light: #FFFFFF;
-$dark: #1F1F2E;
-
-$font-family-sans-serif: 'Poppins', sans-serif;
+$font-family-sans-serif: "Poppins", sans-serif;
 
 $body-color: #757575;
 
@@ -17,8 +15,6 @@ $enable-rounded: false;
 
 @import "bootstrap/scss/bootstrap";
 
-
-/********** Template CSS ************/
 .font-weight-black {
     font-weight: 900 !important;
 }
@@ -35,8 +31,7 @@ h3,
 }
 
 h4,
-h5
-.font-weight-semi-bold {
+h5 .font-weight-semi-bold {
     font-weight: 600 !important;
 }
 
@@ -116,7 +111,7 @@ p,
 }
 
 @media (max-width: 991.98px) {
-    .navbar-light .navbar-nav .nav-link  {
+    .navbar-light .navbar-nav .nav-link {
         padding: 10px 15px;
     }
 }
@@ -234,7 +229,7 @@ p,
     bottom: 0px;
     left: 0;
     border-bottom: 5px solid $primary;
-    transition: .5s;
+    transition: 0.5s;
 }
 
 .team:hover .team-text {
@@ -247,7 +242,7 @@ p,
     height: 100px;
     bottom: -100px;
     left: 0;
-    transition: .5s;
+    transition: 0.5s;
 }
 
 .team:hover .team-social {
@@ -255,7 +250,7 @@ p,
 }
 
 .testimonial-carousel .owl-item {
-    opacity: .2;
+    opacity: 0.2;
 }
 
 .testimonial-carousel .owl-item.center {
@@ -284,4 +279,527 @@ p,
     margin: 0;
     padding: 0;
     list-style-type: none;
+}
+
+// login start here
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: $light;
+    border-radius: 10px;
+    background-color: #f2f2f4;
+
+    h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: $headings-color;
+        text-align: center;
+    }
+
+    form {
+        .form-group {
+            margin-bottom: 15px;
+
+            input {
+                width: 100%;
+                padding: 10px;
+                border: 0;
+                outline: none;
+                border-radius: 5px;
+                font-size: 16px;
+                transition: border-color 0.3s ease-in-out;
+            }
+            input:invalid:focus {
+                border-color: #dc3545;
+                box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+                transition: all 400ms;
+            }
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: $primary;
+            color: $light;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+
+            &:hover {
+                background-color: darken($primary, 10%);
+            }
+        }
+    }
+
+    @media screen and (max-width: 500px) {
+        max-width: 100%;
+        padding: 10px;
+
+        h1 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        form {
+            .form-group {
+                margin-bottom: 10px;
+                input {
+                    padding: 8px;
+                    font-size: 14px;
+                }
+            }
+
+            button {
+                padding: 8px;
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+.sidebarBody {
+    display: flex;
+    justify-content: flex-end;
+
+    @media screen and (max-width: 500px) {
+        display: block;
+        justify-content: center;
+    }
+}
+
+// all order
+.orders-container {
+    width: calc(100% - 250px);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 24px;
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.key {
+    font-weight: bold;
+    color: #ff4800d2;
+}
+
+.order-item {
+    border: 1px solid #b3b3b3;
+    margin: 20px;
+    padding: 10px;
+}
+
+.copy-btn {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    text-decoration: underline;
+    font-size: inherit;
+    color: #ff4800;
+}
+
+.order-details p {
+    font-weight: bold;
+}
+
+.copy-btn:hover {
+    color: #cc3a00;
+    transition: all 400ms;
+}
+
+/* Media queries for smaller screens */
+
+@media screen and (max-width: 768px) {
+    .orders-container {
+        padding: 10px;
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    .order-item {
+        width: 80%;
+    }
+
+    .order-item {
+        padding: 8px;
+    }
+
+    .copy-btn {
+        font-size: 14px;
+    }
+}
+
+// create order styles
+.shipment-form {
+    width: calc(100% - 250px);
+    overflow: hidden;
+    background-color: #f2f2f4;
+
+    h1 {
+        text-align: center;
+        color: #ff4800;
+    }
+
+    form {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        flex-wrap: wrap;
+
+        input {
+            border: 0;
+            outline: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+        input:invalid:focus {
+            border-color: #dc3545;
+            box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+            transition: all 400ms;
+        }
+    }
+
+    .form-group {
+        width: 30%;
+        flex-direction: column;
+        display: flex;
+        margin: 10px;
+    }
+
+    label {
+        color: #ff4800;
+        font-weight: 500;
+        font-size: 14px;
+    }
+
+    button {
+        width: 94%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: $primary;
+        color: $light;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+
+        &:hover {
+            background-color: darken($primary, 10%);
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        width: 100%;
+
+        form {
+            flex-direction: column;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .form-group {
+            width: 260px;
+        }
+
+        h1 {
+            margin-top: 30px;
+        }
+
+        button {
+            width: 260px;
+            margin: 30px;
+        }
+    }
+}
+
+// shipment-form
+.shipment-form {
+    width: 80%;
+
+    h1 {
+        color: #ff4800;
+        text-align: center;
+    }
+
+    form {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        flex-wrap: wrap;
+        .delte-btn {
+            background-color: red;
+            margin: 20px;
+        }
+    }
+
+    .form-group {
+        width: 30%;
+        flex-direction: column;
+        display: flex;
+        margin: 10px;
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 0;
+            outline: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s ease-in-out;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 0;
+            outline: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s ease-in-out;
+        }
+        input:focus {
+            border-color: #dc3545;
+            box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+            transition: all 400ms;
+        }
+
+        textarea:focus {
+            border-color: #dc3545;
+            box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+            transition: all 400ms;
+        }
+    }
+
+    label {
+        color: #ff4800;
+        font-weight: 500;
+        font-size: 14px;
+    }
+
+    button {
+        width: 94%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: $primary;
+        color: $light;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+
+        &:hover {
+            background-color: darken($primary, 10%);
+        }
+
+        margin: 10px;
+    }
+
+    .delete-btn {
+        background-color: red;
+    }
+
+    @media screen and (max-width: 500px) {
+        width: 100%;
+
+        form {
+            flex-direction: column;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .form-group {
+            width: 260px;
+        }
+
+        h1 {
+            margin-top: 30px;
+        }
+
+        button {
+            width: 260px;
+            position: fixed;
+            bottom: 80px;
+        }
+
+        .delete-btn {
+            position: fixed;
+            bottom: 10px;
+        }
+        #create-btn {
+            position: fixed;
+            bottom: 10px;
+        }
+
+        #last-group {
+            margin-bottom: 110px;
+        }
+    }
+}
+
+.select {
+    width: 93%;
+    margin-bottom: 30px;
+    flex-direction: column;
+    display: flex;
+    margin-top: 10px;
+
+    select {
+        box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+        border-radius: 5px;
+        border-color: #dc3545;
+        width: 100%;
+    }
+
+    @media screen and (max-width: 500px) {
+        width: 250px;
+        margin-bottom: 160px;
+    }
+}
+
+// sidebar
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 250px;
+    background-color: $dark;
+    color: $light;
+    overflow-y: auto;
+    height: 100vh;
+
+    a {
+        display: block;
+        padding: 15px;
+        color: $light;
+        text-decoration: none;
+        transition: background-color 0.2s ease-in-out;
+
+        &:hover {
+            background-color: #ff4800;
+        }
+    }
+}
+
+.content {
+    margin-left: 250px;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+.navbar {
+    background-color: $primary;
+    color: $light;
+    padding: 10px;
+    display: none;
+    position: fixed;
+    top: 0;
+
+    .menu-btn {
+        display: block;
+        cursor: pointer;
+        .menu-icon {
+            width: 30px;
+            height: 3px;
+            background-color: $light;
+            margin: 6px 0;
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .navbar {
+        display: block;
+    }
+
+    .menu-btn {
+        display: none;
+    }
+
+    .sidebar {
+        z-index: 999;
+        transition: left 0.3s ease-in-out;
+        left: -250px;
+        &.sidebar-active {
+            left: 0;
+        }
+    }
+
+    .content {
+        margin-left: 0;
+        transition: margin-left 0.3s ease-in-out;
+    }
+
+    .blur-content {
+        filter: blur(5px);
+    }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    .blur-content {
+        filter: blur(5px);
+    }
+}
+
+.sidebar a.active {
+    background-color: #ff4800;
+}
+
+.add-order-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: $primary;
+    color: $light;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1;
+
+    a {
+        color: white;
+        text-decoration: none;
+    }
+}
+
+.add-order-btn:hover {
+    background-color: #cc3a00;
+    transition: all 350ms;
 }

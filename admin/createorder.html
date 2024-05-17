@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Order</title>
+    <link rel="stylesheet" href="../scss/style.css" />
+  </head>
+  <body class="sidebarBody">
+    <div class="navbar">
+      <div class="menu-btn" onclick="toggleSidebar()">
+        <div class="menu-icon"></div>
+      </div>
+    </div>
+
+    <div id="sidebar" class="sidebar">
+      <a href="./allorders.html" onclick="toggleSidebar(); setActiveLink(this);"
+        >Home</a
+      >
+      <a href="../index.html" onclick="toggleSidebar(); setActiveLink(this);"
+        >Logout</a
+      >
+    </div>
+    
+    <script>
+      function toggleSidebar() {
+        const sidebar = document.getElementById("sidebar");
+        sidebar.classList.toggle("sidebar-active");
+      }
+
+      function setActiveLink(clickedLink) {
+        const sidebarLinks = document.querySelectorAll(".sidebar a");
+
+        sidebarLinks.forEach((link) => {
+          link.classList.remove("active");
+        });
+
+        clickedLink.classList.add("active");
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sidebar</title>
+    <link rel="stylesheet" href="../scss/style.css" />
+  </head>
+  <body class="sidebarBody">
+    <div class="navbar">
+      <div class="menu-btn" onclick="toggleSidebar()">
+        <div class="menu-icon"></div>
+      </div>
+    </div>
+
+    <div id="sidebar" class="sidebar">
+      <a href="./allorders.html" onclick="toggleSidebar(); setActiveLink(this);"
+        >Home</a
+      >
+      <a href="../index.html" onclick="toggleSidebar(); setActiveLink(this);"
+        >Logout</a
+      >
+    </div>
+
+    <div class="orders-container">
+      <h1>All Orders</h1>
+      <div class="order-item">
+        <div class="order-details">
+          <p>
+            <span class="key">Name:</span> <span class="value">Order 1</span>
+          </p>
+          <p>
+            <span class="key">Tracking ID:</span>
+            <span class="value tracking-id">ABC123...</span>
+          </p>
+          <p>
+            <span class="key">Status:</span>
+            <span class="value">Shipped</span>
+          </p>
+          <p>
+            <span class="key">Time:</span> <span class="value">10:00 AM</span>
+          </p>
+          <p>
+            <span class="key">Date:</span>
+            <span class="value">2024-05-15</span>
+          </p>
+        </div>
+        <button class="copy-btn" onclick="copyTrackingId('ABC123...')">
+          Copy ID
+        </button>
+      </div>
+      <div class="order-item">
+        <div class="order-details">
+          <p>
+            <span class="key">Name:</span> <span class="value">Order 1</span>
+          </p>
+          <p>
+            <span class="key">Tracking ID:</span>
+            <span class="value tracking-id">ABC123...</span>
+          </p>
+          <p>
+            <span class="key">Status:</span>
+            <span class="value">Shipped</span>
+          </p>
+          <p>
+            <span class="key">Time:</span> <span class="value">10:00 AM</span>
+          </p>
+          <p>
+            <span class="key">Date:</span>
+            <span class="value">2024-05-15</span>
+          </p>
+        </div>
+        <button class="copy-btn" onclick="copyTrackingId('ABC123...')">
+          Copy ID
+        </button>
+      </div>
+      <div class="order-item">
+        <div class="order-details">
+          <p>
+            <span class="key">Name:</span> <span class="value">Order 1</span>
+          </p>
+          <p>
+            <span class="key">Tracking ID:</span>
+            <span class="value tracking-id">ABC123...</span>
+          </p>
+          <p>
+            <span class="key">Status:</span>
+            <span class="value">Shipped</span>
+          </p>
+          <p>
+            <span class="key">Time:</span> <span class="value">10:00 AM</span>
+          </p>
+          <p>
+            <span class="key">Date:</span>
+            <span class="value">2024-05-15</span>
+          </p>
+        </div>
+        <button class="copy-btn" onclick="copyTrackingId('ABC123...')">
+          Copy ID
+        </button>
+      </div>
+      <div class="order-item">
+        <div class="order-details">
+          <p>
+            <span class="key">Name:</span> <span class="value">Order 1</span>
+          </p>
+          <p>
+            <span class="key">Tracking ID:</span>
+            <span class="value tracking-id">ABC123...</span>
+          </p>
+          <p>
+            <span class="key">Status:</span>
+            <span class="value">Shipped</span>
+          </p>
+          <p>
+            <span class="key">Time:</span> <span class="value">10:00 AM</span>
+          </p>
+          <p>
+            <span class="key">Date:</span>
+            <span class="value">2024-05-15</span>
+          </p>
+        </div>
+        <button class="copy-btn" onclick="copyTrackingId('ABC123...')">
+          Copy ID
+        </button>
+      </div>
+      <div class="order-item">
+        <div class="order-details">
+          <p>
+            <span class="key">Name:</span> <span class="value">Order 1</span>
+          </p>
+          <p>
+            <span class="key">Tracking ID:</span>
+            <span class="value tracking-id">ABC123...</span>
+          </p>
+          <p>
+            <span class="key">Status:</span>
+            <span class="value">Shipped</span>
+          </p>
+          <p>
+            <span class="key">Time:</span> <span class="value">10:00 AM</span>
+          </p>
+          <p>
+            <span class="key">Date:</span>
+            <span class="value">2024-05-15</span>
+          </p>
+        </div>
+        <button class="copy-btn" onclick="copyTrackingId('ABC123...')">
+          Copy ID
+        </button>
+      </div>
+      <div class="order-item">
+        <div class="order-details">
+          <p>
+            <span class="key">Name:</span> <span class="value">Order 1</span>
+          </p>
+          <p>
+            <span class="key">Tracking ID:</span>
+            <span class="value tracking-id">ABC123...</span>
+          </p>
+          <p>
+            <span class="key">Status:</span>
+            <span class="value">Shipped</span>
+          </p>
+          <p>
+            <span class="key">Time:</span> <span class="value">10:00 AM</span>
+          </p>
+          <p>
+            <span class="key">Date:</span>
+            <span class="value">2024-05-15</span>
+          </p>
+        </div>
+        <button class="copy-btn" onclick="copyTrackingId('ABC123...')">
+          Copy ID
+        </button>
+      </div>
+      <div class="order-item">
+        <div class="order-details">
+          <p>
+            <span class="key">Name:</span> <span class="value">Order 1</span>
+          </p>
+          <p>
+            <span class="key">Tracking ID:</span>
+            <span class="value tracking-id">ABC123...</span>
+          </p>
+          <p>
+            <span class="key">Status:</span>
+            <span class="value">Shipped</span>
+          </p>
+          <p>
+            <span class="key">Time:</span> <span class="value">10:00 AM</span>
+          </p>
+          <p>
+            <span class="key">Date:</span>
+            <span class="value">2024-05-15</span>
+          </p>
+        </div>
+        <button class="copy-btn" onclick="copyTrackingId('ABC123...')">
+          Copy ID
+        </button>
+      </div>
+      <div class="order-item">
+        <div class="order-details">
+          <p>
+            <span class="key">Name:</span> <span class="value">Order 1</span>
+          </p>
+          <p>
+            <span class="key">Tracking ID:</span>
+            <span class="value tracking-id">ABC123...</span>
+          </p>
+          <p>
+            <span class="key">Status:</span>
+            <span class="value">Shipped</span>
+          </p>
+          <p>
+            <span class="key">Time:</span> <span class="value">10:00 AM</span>
+          </p>
+          <p>
+            <span class="key">Date:</span>
+            <span class="value">2024-05-15</span>
+          </p>
+        </div>
+        <button class="copy-btn" onclick="copyTrackingId('ABC123...')">
+          Copy ID
+        </button>
+      </div>
+      <div class="order-item">
+        <div class="order-details">
+          <p>
+            <span class="key">Name:</span> <span class="value">Order 1</span>
+          </p>
+          <p>
+            <span class="key">Tracking ID:</span>
+            <span class="value tracking-id">ABC123...</span>
+          </p>
+          <p>
+            <span class="key">Status:</span>
+            <span class="value">Shipped</span>
+          </p>
+          <p>
+            <span class="key">Time:</span> <span class="value">10:00 AM</span>
+          </p>
+          <p>
+            <span class="key">Date:</span>
+            <span class="value">2024-05-15</span>
+          </p>
+        </div>
+        <button class="copy-btn" onclick="copyTrackingId('ABC123...')">
+          Copy ID
+        </button>
+      </div>
+      <div class="order-item">
+        <div class="order-details">
+          <p>
+            <span class="key">Name:</span> <span class="value">Order 1</span>
+          </p>
+          <p>
+            <span class="key">Tracking ID:</span>
+            <span class="value tracking-id">ABC123...</span>
+          </p>
+          <p>
+            <span class="key">Status:</span>
+            <span class="value">Shipped</span>
+          </p>
+          <p>
+            <span class="key">Time:</span> <span class="value">10:00 AM</span>
+          </p>
+          <p>
+            <span class="key">Date:</span>
+            <span class="value">2024-05-15</span>
+          </p>
+        </div>
+        <button class="copy-btn" onclick="copyTrackingId('ABC123...')">
+          Copy ID
+        </button>
+      </div>
+      <div class="order-item">
+        <div class="order-details">
+          <p>
+            <span class="key">Name:</span> <span class="value">Order 1</span>
+          </p>
+          <p>
+            <span class="key">Tracking ID:</span>
+            <span class="value tracking-id">ABC123...</span>
+          </p>
+          <p>
+            <span class="key">Status:</span>
+            <span class="value">Shipped</span>
+          </p>
+          <p>
+            <span class="key">Time:</span> <span class="value">10:00 AM</span>
+          </p>
+          <p>
+            <span class="key">Date:</span>
+            <span class="value">2024-05-15</span>
+          </p>
+        </div>
+        <button class="copy-btn" onclick="copyTrackingId('ABC123...')">
+          Copy ID
+        </button>
+      </div>
+      <div class="order-item">
+        <div class="order-details">
+          <p>
+            <span class="key">Name:</span> <span class="value">Order 1</span>
+          </p>
+          <p>
+            <span class="key">Tracking ID:</span>
+            <span class="value tracking-id">ABC123...</span>
+          </p>
+          <p>
+            <span class="key">Status:</span>
+            <span class="value">Shipped</span>
+          </p>
+          <p>
+            <span class="key">Time:</span> <span class="value">10:00 AM</span>
+          </p>
+          <p>
+            <span class="key">Date:</span>
+            <span class="value">2024-05-15</span>
+          </p>
+        </div>
+        <button class="copy-btn" onclick="copyTrackingId('ABC123...')">
+          Copy ID
+        </button>
+      </div>
+      <div class="order-item">
+        <div class="order-details">
+          <p>
+            <span class="key">Name:</span> <span class="value">Order 1</span>
+          </p>
+          <p>
+            <span class="key">Tracking ID:</span>
+            <span class="value tracking-id">ABC123...</span>
+          </p>
+          <p>
+            <span class="key">Status:</span>
+            <span class="value">Shipped</span>
+          </p>
+          <p>
+            <span class="key">Time:</span> <span class="value">10:00 AM</span>
+          </p>
+          <p>
+            <span class="key">Date:</span>
+            <span class="value">2024-05-15</span>
+          </p>
+        </div>
+        <button class="copy-btn" onclick="copyTrackingId('ABC123...')">
+          Copy ID
+        </button>
+      </div>
+      <div class="order-item">
+        <div class="order-details">
+          <p>
+            <span class="key">Name:</span> <span class="value">Order 1</span>
+          </p>
+          <p>
+            <span class="key">Tracking ID:</span>
+            <span class="value tracking-id">ABC123...</span>
+          </p>
+          <p>
+            <span class="key">Status:</span>
+            <span class="value">Shipped</span>
+          </p>
+          <p>
+            <span class="key">Time:</span> <span class="value">10:00 AM</span>
+          </p>
+          <p>
+            <span class="key">Date:</span>
+            <span class="value">2024-05-15</span>
+          </p>
+        </div>
+        <button class="copy-btn" onclick="copyTrackingId('ABC123...')">
+          Copy ID
+        </button>
+      </div>
+      <div class="order-item">
+        <div class="order-details">
+          <p>
+            <span class="key">Name:</span> <span class="value">Order 1</span>
+          </p>
+          <p>
+            <span class="key">Tracking ID:</span>
+            <span class="value tracking-id">ABC123...</span>
+          </p>
+          <p>
+            <span class="key">Status:</span>
+            <span class="value">Shipped</span>
+          </p>
+          <p>
+            <span class="key">Time:</span> <span class="value">10:00 AM</span>
+          </p>
+          <p>
+            <span class="key">Date:</span>
+            <span class="value">2024-05-15</span>
+          </p>
+        </div>
+        <button class="copy-btn" onclick="copyTrackingId('ABC123...')">
+          Copy ID
+        </button>
+      </div>
+      <div class="order-item">
+        <div class="order-details">
+          <p>
+            <span class="key">Name:</span> <span class="value">Order 1</span>
+          </p>
+          <p>
+            <span class="key">Tracking ID:</span>
+            <span class="value tracking-id">ABC123...</span>
+          </p>
+          <p>
+            <span class="key">Status:</span>
+            <span class="value">Shipped</span>
+          </p>
+          <p>
+            <span class="key">Time:</span> <span class="value">10:00 AM</span>
+          </p>
+          <p>
+            <span class="key">Date:</span>
+            <span class="value">2024-05-15</span>
+          </p>
+        </div>
+        <button class="copy-btn" onclick="copyTrackingId('ABC123...')">
+          Copy ID
+        </button>
+      </div>
+      <div class="order-item">
+        <div class="order-details">
+          <p>
+            <span class="key">Name:</span> <span class="value">Order 1</span>
+          </p>
+          <p>
+            <span class="key">Tracking ID:</span>
+            <span class="value tracking-id">ABC123...</span>
+          </p>
+          <p>
+            <span class="key">Status:</span>
+            <span class="value">Shipped</span>
+          </p>
+          <p>
+            <span class="key">Time:</span> <span class="value">10:00 AM</span>
+          </p>
+          <p>
+            <span class="key">Date:</span>
+            <span class="value">2024-05-15</span>
+          </p>
+        </div>
+        <button class="copy-btn" onclick="copyTrackingId('ABC123...')">
+          Copy ID
+        </button>
+      </div>
+      <div class="order-item">
+        <div class="order-details">
+          <p>
+            <span class="key">Name:</span> <span class="value">Order 1</span>
+          </p>
+          <p>
+            <span class="key">Tracking ID:</span>
+            <span class="value tracking-id">ABC123...</span>
+          </p>
+          <p>
+            <span class="key">Status:</span>
+            <span class="value">Shipped</span>
+          </p>
+          <p>
+            <span class="key">Time:</span> <span class="value">10:00 AM</span>
+          </p>
+          <p>
+            <span class="key">Date:</span>
+            <span class="value">2024-05-15</span>
+          </p>
+        </div>
+        <button class="copy-btn" onclick="copyTrackingId('ABC123...')">
+          Copy ID
+        </button>
+      </div>
+      <div class="order-item">
+        <div class="order-details">
+          <p>
+            <span class="key">Name:</span> <span class="value">Order 1</span>
+          </p>
+          <p>
+            <span class="key">Tracking ID:</span>
+            <span class="value tracking-id">ABC123...</span>
+          </p>
+          <p>
+            <span class="key">Status:</span>
+            <span class="value">Shipped</span>
+          </p>
+          <p>
+            <span class="key">Time:</span> <span class="value">10:00 AM</span>
+          </p>
+          <p>
+            <span class="key">Date:</span>
+            <span class="value">2024-05-15</span>
+          </p>
+        </div>
+        <button class="copy-btn" onclick="copyTrackingId('ABC123...')">
+          Copy ID
+        </button>
+      </div>
+      <div class="order-item">
+        <div class="order-details">
+          <p>
+            <span class="key">Name:</span> <span class="value">Order 1</span>
+          </p>
+          <p>
+            <span class="key">Tracking ID:</span>
+            <span class="value tracking-id">ABC123...</span>
+          </p>
+          <p>
+            <span class="key">Status:</span>
+            <span class="value">Shipped</span>
+          </p>
+          <p>
+            <span class="key">Time:</span> <span class="value">10:00 AM</span>
+          </p>
+          <p>
+            <span class="key">Date:</span>
+            <span class="value">2024-05-15</span>
+          </p>
+        </div>
+        <button class="copy-btn" onclick="copyTrackingId('ABC123...')">
+          Copy ID
+        </button>
+      </div>
+      <div class="order-item">
+        <div class="order-details">
+          <p>
+            <span class="key">Name:</span> <span class="value">Order 1</span>
+          </p>
+          <p>
+            <span class="key">Tracking ID:</span>
+            <span class="value tracking-id">ABC123...</span>
+          </p>
+          <p>
+            <span class="key">Status:</span>
+            <span class="value">Shipped</span>
+          </p>
+          <p>
+            <span class="key">Time:</span> <span class="value">10:00 AM</span>
+          </p>
+          <p>
+            <span class="key">Date:</span>
+            <span class="value">2024-05-15</span>
+          </p>
+        </div>
+        <button class="copy-btn" onclick="copyTrackingId('ABC123...')">
+          Copy ID
+        </button>
+      </div>
+      <div class="order-item">
+        <div class="order-details">
+          <p>
+            <span class="key">Name:</span> <span class="value">Order 1</span>
+          </p>
+          <p>
+            <span class="key">Tracking ID:</span>
+            <span class="value tracking-id">ABC123...</span>
+          </p>
+          <p>
+            <span class="key">Status:</span>
+            <span class="value">Shipped</span>
+          </p>
+          <p>
+            <span class="key">Time:</span> <span class="value">10:00 AM</span>
+          </p>
+          <p>
+            <span class="key">Date:</span>
+            <span class="value">2024-05-15</span>
+          </p>
+        </div>
+        <button class="copy-btn" onclick="copyTrackingId('ABC123...')">
+          Copy ID
+        </button>
+      </div>
+      <div class="order-item">
+        <div class="order-details">
+          <p>
+            <span class="key">Name:</span> <span class="value">Order 1</span>
+          </p>
+          <p>
+            <span class="key">Tracking ID:</span>
+            <span class="value tracking-id">ABC123...</span>
+          </p>
+          <p>
+            <span class="key">Status:</span>
+            <span class="value">Shipped</span>
+          </p>
+          <p>
+            <span class="key">Time:</span> <span class="value">10:00 AM</span>
+          </p>
+          <p>
+            <span class="key">Date:</span>
+            <span class="value">2024-05-15</span>
+          </p>
+        </div>
+        <button class="copy-btn" onclick="copyTrackingId('ABC123...')">
+          Copy ID
+        </button>
+      </div>
+      <div class="order-item">
+        <div class="order-details">
+          <p>
+            <span class="key">Name:</span> <span class="value">Order 1</span>
+          </p>
+          <p>
+            <span class="key">Tracking ID:</span>
+            <span class="value tracking-id">ABC123...</span>
+          </p>
+          <p>
+            <span class="key">Status:</span>
+            <span class="value">Shipped</span>
+          </p>
+          <p>
+            <span class="key">Time:</span> <span class="value">10:00 AM</span>
+          </p>
+          <p>
+            <span class="key">Date:</span>
+            <span class="value">2024-05-15</span>
+          </p>
+        </div>
+        <button class="copy-btn" onclick="copyTrackingId('ABC123...')">
+          Copy ID
+        </button>
+      </div>
+    </div>
+
+    <button class="add-order-btn">
+      <a href="./createorder.html">Add Order</a>
+    </button>
+
+    <script>
+      function toggleSidebar() {
+        const sidebar = document.getElementById("sidebar");
+        sidebar.classList.toggle("sidebar-active");
+      }
+
+      function setActiveLink(clickedLink) {
+        const sidebarLinks = document.querySelectorAll(".sidebar a");
+
+        sidebarLinks.forEach((link) => {
+          link.classList.remove("active");
+        });
+
+        clickedLink.classList.add("active");
+      }
+    </script>
+  </body>
+</html>
