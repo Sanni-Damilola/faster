@@ -29,38 +29,12 @@
 
     <div class="orders-container">
       <h1>All Orders</h1>
-      <div class="order-item">
-        <a href="./updateorder.html">
-          <div class="order-details">
-            <p>
-              <span class="key">Name:</span> <span class="value">Order 1</span>
-            </p>
-            <p>
-              <span class="key">Tracking ID:</span>
-              <span class="value tracking-id">ABC123...</span>
-            </p>
-            <p>
-              <span class="key">Status:</span>
-              <span class="value">Shipped</span>
-            </p>
-            <p>
-              <span class="key">Time:</span> <span class="value">10:00 AM</span>
-            </p>
-            <p>
-              <span class="key">Date:</span>
-              <span class="value">2024-05-15</span>
-            </p>
-          </div>
-        </a>
-        <button class="copy-btn" onclick="copyTrackingId('ABC123...')">
-          Copy ID
-        </button>
-      </div>
-
+      <div id="orders"></div>
       <button class="add-order-btn">
         <a href="./createorder.html">Add Order</a>
       </button>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
       function toggleSidebar() {
         const sidebar = document.getElementById("sidebar");
@@ -69,17 +43,102 @@
 
       function setActiveLink(clickedLink) {
         const sidebarLinks = document.querySelectorAll(".sidebar a");
-
         sidebarLinks.forEach((link) => {
           link.classList.remove("active");
         });
-
         clickedLink.classList.add("active");
       }
+
       function logoutUser() {
         localStorage.removeItem("userId");
         window.location.href = "../index.html";
       }
+
+      async function fetchOrders() {
+        try {
+          const response = await axios.get(
+            "https://faster-mnuk.onrender.com/api/"
+          );
+          return response.data;
+        } catch (error) {
+          console.error("Error fetching orders:", error);
+          return [];
+        }
+      }
+
+      function copyTrackingId(trackingId) {
+        const tempInput = document.createElement("input");
+        tempInput.value = trackingId;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand("copy");
+        document.body.removeChild(tempInput);
+        showAlert("Tracking ID copied!", "success");
+      }
+
+      async function renderOrders() {
+        const ordersContainer = document.getElementById("orders");
+        const orders = await fetchOrders();
+
+        orders?.data?.forEach((order) => {
+          const orderItem = document.createElement("div");
+          orderItem.classList.add("order-item");
+
+          const orderLink = document.createElement("a");
+          orderLink.href = `./updateorder.html?id=${order.TRACKINGID}`;
+          orderLink.addEventListener("click", () => setActiveLink(orderLink));
+
+          const orderDetails = document.createElement("div");
+          orderDetails.classList.add("order-details");
+
+          const nameParagraph = document.createElement("p");
+          nameParagraph.innerHTML = `<span class="key">Name:</span> <span class="value">${order.NAME}</span>`;
+          orderDetails.appendChild(nameParagraph);
+
+          const trackingIdParagraph = document.createElement("p");
+          trackingIdParagraph.innerHTML = `<span class="key">Tracking ID:</span> <span class="value tracking-id">${order.TRACKINGID}</span>`;
+          orderDetails.appendChild(trackingIdParagraph);
+
+          orderLink.appendChild(orderDetails);
+          orderItem.appendChild(orderLink);
+
+          const copyButton = document.createElement("button");
+          copyButton.className = "copy-btn";
+          copyButton.textContent = "Copy ID";
+          copyButton.addEventListener("click", () =>
+            copyTrackingId(order.TRACKINGID)
+          );
+          orderItem.appendChild(copyButton);
+
+          ordersContainer.appendChild(orderItem);
+        });
+      }
+
+      function showLoading() {
+        const loadingDiv = document.createElement("div");
+        loadingDiv.id = "loading";
+        loadingDiv.textContent = "Loading...";
+        document.body.appendChild(loadingDiv);
+      }
+
+      function hideLoading() {
+        const loadingDiv = document.getElementById("loading");
+        if (loadingDiv) {
+          loadingDiv.remove();
+        }
+      }
+
+      function showAlert(message, type) {
+        const alertDiv = document.createElement("div");
+        alertDiv.className = `alert ${type}`;
+        alertDiv.textContent = message;
+        document.body.appendChild(alertDiv);
+        setTimeout(() => {
+          alertDiv.remove();
+        }, 3000);
+      }
+
+      renderOrders();
     </script>
   </body>
 </html>

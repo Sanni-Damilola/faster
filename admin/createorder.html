@@ -29,154 +29,69 @@
 
     <div class="shipment-form">
       <h1>Shipment Form</h1>
-      <form>
+      <form id="shipment-form">
         <div class="form-group">
           <label for="name">Name</label>
-          <input type="text" id="name" name="name" />
+          <input type="text" id="name" name="name" required />
+          <div class="invalid-feedback">Name is required</div>
         </div>
 
         <div class="form-group">
           <label for="address">Address</label>
-          <input type="text" id="address" name="address" />
-        </div>
-
-        <div class="form-group">
-          <label for="phone">Phone</label>
-          <input type="tel" id="phone" name="phone" />
+          <input type="text" id="address" name="address" required />
+          <div class="invalid-feedback">Address is required</div>
         </div>
 
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" id="email" name="email" />
+          <input type="email" id="email" name="email" required />
+          <div class="invalid-feedback">Email is required</div>
         </div>
 
         <div class="form-group">
-          <label for="origin">Origin</label>
-          <input type="text" id="origin" name="origin" />
+          <label for="bill">Bill</label>
+          <input type="number" id="bill" name="bill" required />
+          <div class="invalid-feedback">Bill is required</div>
         </div>
 
         <div class="form-group">
-          <label for="package">Package</label>
-          <input type="text" id="package" name="package" />
-        </div>
-
-        <div class="form-group">
-          <label for="destination">Destination</label>
-          <input type="text" id="destination" name="destination" />
-        </div>
-
-        <div class="form-group">
-          <label for="carrier">Carrier</label>
-          <input type="text" id="carrier" name="carrier" />
-        </div>
-
-        <div class="form-group">
-          <label for="type-of-shipment">Type of Shipment</label>
-          <input type="text" id="type-of-shipment" name="type-of-shipment" />
-        </div>
-
-        <div class="form-group">
-          <label for="weight">Weight</label>
-          <input type="number" id="weight" name="weight" />
-        </div>
-
-        <div class="form-group">
-          <label for="shipment-mode">Shipment Mode</label>
-          <input type="text" id="shipment-mode" name="shipment-mode" />
-        </div>
-
-        <div class="form-group">
-          <label for="carrier-reference-no">Carrier Reference No</label>
+          <label for="destination-name">Destination Name</label>
           <input
             type="text"
-            id="carrier-reference-no"
-            name="carrier-reference-no"
+            id="destination-name"
+            name="destination-name"
+            required
           />
+          <div class="invalid-feedback">Destination Name is required</div>
         </div>
 
         <div class="form-group">
-          <label for="product">Product</label>
-          <input type="text" id="product" name="product" />
-        </div>
-
-        <div class="form-group">
-          <label for="qty">Quantity</label>
-          <input type="number" id="qty" name="qty" />
-        </div>
-
-        <div class="form-group">
-          <label for="payment-mode">Payment Mode</label>
-          <input type="text" id="payment-mode" name="payment-mode" />
-        </div>
-
-        <div class="form-group">
-          <label for="total-freight">Total Freight</label>
-          <input type="number" id="total-freight" name="total-freight" />
-        </div>
-
-        <div class="form-group">
-          <label for="expected-delivery-date">Expected Delivery Date</label>
+          <label for="destination-address">Destination Address</label>
           <input
-            type="date"
-            id="expected-delivery-date"
-            name="expected-delivery-date"
+            type="text"
+            id="destination-address"
+            name="destination-address"
+            required
           />
+          <div class="invalid-feedback">Destination Address is required</div>
         </div>
 
         <div class="form-group">
-          <label for="departure-time">Departure Time</label>
-          <input type="time" id="departure-time" name="departure-time" />
-        </div>
-
-        <div class="form-group">
-          <label for="pickup-date">Pickup Date</label>
-          <input type="date" id="pickup-date" name="pickup-date" />
-        </div>
-
-        <div class="form-group">
-          <label for="pickup-time">Pickup Time</label>
-          <input type="time" id="pickup-time" name="pickup-time" />
-        </div>
-
-        <div class="form-group">
-          <label for="comments">Comments</label>
-          <textarea id="comments" name="comments"></textarea>
-        </div>
-
-        <div class="form-group">
-          <label for="piece-type">Piece Type</label>
-          <input type="text" id="piece-type" name="piece-type" />
-        </div>
-
-        <div class="form-group">
-          <label for="description">Description</label>
-          <input type="text" id="description" name="description" />
-        </div>
-
-        <div class="form-group">
-          <label for="length">Length</label>
-          <input type="number" id="length" name="length" />
-        </div>
-
-        <div class="form-group">
-          <label for="width">Width</label>
-          <input type="number" id="width" name="width" />
-        </div>
-
-        <div class="form-group">
-          <label for="weight-kg">Weight (KG)</label>
-          <input type="number" id="weight-kg" name="weight-kg" />
-        </div>
-
-        <div id="last-group" class="form-group">
-          <label for="height-kg">Height (KG)</label>
-          <input type="number" id="height-kg" name="height-kg" />
+          <label for="destination-phoneno">Destination Phone No</label>
+          <input
+            type="tel"
+            id="destination-phoneno"
+            name="destination-phoneno"
+            required
+          />
+          <div class="invalid-feedback">Destination Phone No is required</div>
         </div>
 
         <button id="create-btn" type="submit">Submit</button>
       </form>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
       function toggleSidebar() {
         const sidebar = document.getElementById("sidebar");
@@ -195,6 +110,85 @@
       function logoutUser() {
         localStorage.removeItem("userId");
         window.location.href = "../index.html";
+      }
+
+      // create order
+      document
+        .getElementById("shipment-form")
+        .addEventListener("submit", async function (event) {
+          event.preventDefault();
+
+          const form = event.target;
+          let valid = true;
+
+          form.querySelectorAll("input").forEach((input) => {
+            if (!input.value) {
+              valid = false;
+              input.nextElementSibling.style.display = "block";
+            } else {
+              input.nextElementSibling.style.display = "none";
+            }
+          });
+
+          if (!valid) {
+            return;
+          }
+
+          showLoading();
+
+          const formData = {
+            NAME: form.name.value,
+            ADDRESS: form.address.value,
+            EMAIL: form.email.value,
+            BILL: form.bill.value,
+            DESTINATION_NAME: form["destination-name"].value,
+            DESTINATION_ADDRESS: form["destination-address"].value,
+            DESTINATION_PHONENO: form["destination-phoneno"].value,
+          };
+
+          try {
+            const response = await axios.post(
+              "https://faster-mnuk.onrender.com/api",
+              formData
+            );
+
+            hideLoading();
+
+            showAlert("Shipment created successfully!", "success");
+          } catch (error) {
+            // Hide loading
+            hideLoading();
+
+            showAlert(
+              "An error occurred while creating the shipment.",
+              "error"
+            );
+          }
+        });
+
+      function showLoading() {
+        const loadingDiv = document.createElement("div");
+        loadingDiv.id = "loading";
+        loadingDiv.textContent = "Loading...";
+        document.body.appendChild(loadingDiv);
+      }
+
+      function hideLoading() {
+        const loadingDiv = document.getElementById("loading");
+        if (loadingDiv) {
+          loadingDiv.remove();
+        }
+      }
+
+      function showAlert(message, type) {
+        const alertDiv = document.createElement("div");
+        alertDiv.className = `alert ${type}`;
+        alertDiv.textContent = message;
+        document.body.appendChild(alertDiv);
+
+        setTimeout(() => {
+          alertDiv.remove();
+        }, 3000);
       }
     </script>
   </body>

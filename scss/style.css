@@ -9283,7 +9283,7 @@ p,
 }
 @media screen and (max-width: 500px) {
   .login-container {
-    max-width: 100%;
+    max-width: 300px;
     padding: 10px;
   }
   .login-container h1 {
@@ -9339,7 +9339,8 @@ h1 {
 }
 
 .order-item {
-  border: 1px solid #b3b3b3;
+  background-color: #f2f2f2;
+  border-radius: 8px;
   margin: 20px;
   padding: 10px;
   cursor: pointer;
@@ -9388,6 +9389,7 @@ h1 {
 .shipment-form {
   width: calc(100% - 250px);
   overflow: hidden;
+  height: 100vh;
   background-color: #f2f2f4;
 }
 .shipment-form h1 {
@@ -9566,7 +9568,7 @@ h1 {
     bottom: 10px;
   }
   .shipment-form #last-group {
-    margin-bottom: 110px;
+    margin-bottom: 100px;
   }
 }
 
@@ -9690,7 +9692,6 @@ h1 {
   right: 20px;
   padding: 10px 20px;
   background-color: #ff4800;
-  color: #ffffff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -9699,6 +9700,10 @@ h1 {
 .add-order-btn a {
   color: white;
   text-decoration: none;
+}
+
+.value {
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .add-order-btn:hover {
@@ -9711,10 +9716,15 @@ h1 {
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  padding: 10px 50px;
   border-radius: 5px;
   color: #fff;
-  font-size: 14px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 12px;
+  padding: 5px;
   font-weight: bold;
   transition: all 400ms;
 }
