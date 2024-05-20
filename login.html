@@ -33,8 +33,33 @@
       <a href="javascript:history.back()" class="back-button">Back</a>
     </div>
 
+    <div id="loading-bar">
+      <div id="loading-progress"></div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
+      function showLoading() {
+        const loadingBar = document.getElementById("loading-bar");
+        loadingBar.style.display = "block";
+      }
+
+      function hideLoading() {
+        const loadingBar = document.getElementById("loading-bar");
+        loadingBar.style.display = "none";
+      }
+
+      function showAlert(message, type) {
+        const alertDiv = document.createElement("div");
+        alertDiv.className = `alert ${type}`;
+        alertDiv.textContent = message;
+        document.body.appendChild(alertDiv);
+
+        setTimeout(() => {
+          alertDiv.remove();
+        }, 3000);
+      }
+
       function loginUser(email, password) {
         showLoading();
 
@@ -56,36 +81,14 @@
             }
           })
           .catch((error) => {
-            showAlert(error?.response?.data?.message, "error");
+            showAlert(
+              error?.response?.data?.message || "Login failed",
+              "error"
+            );
           })
           .finally(() => {
             hideLoading();
           });
-      }
-
-      function showLoading() {
-        const loadingDiv = document.createElement("div");
-        loadingDiv.id = "loading";
-        loadingDiv.textContent = "Loading...";
-        document.body.appendChild(loadingDiv);
-      }
-
-      function hideLoading() {
-        const loadingDiv = document.getElementById("loading");
-        if (loadingDiv) {
-          loadingDiv.remove();
-        }
-      }
-
-      function showAlert(message, type) {
-        const alertDiv = document.createElement("div");
-        alertDiv.className = `alert ${type}`;
-        alertDiv.textContent = message;
-        document.body.appendChild(alertDiv);
-
-        setTimeout(() => {
-          alertDiv.remove();
-        }, 3000);
       }
 
       document

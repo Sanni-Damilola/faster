@@ -382,6 +382,33 @@ p,
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+
+    a {
+        text-decoration: none;
+    }
+}
+
+#loading-bar {
+    width: 100%;
+    height: 4px;
+    background: #f3f3f3;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+#loading-progress {
+    width: 0;
+    height: 100%;
+    background: #ff4800;
+    animation: load 2s infinite;
+}
+@keyframes load {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
 }
 
 h1 {
@@ -398,23 +425,24 @@ h1 {
 }
 
 .order-item {
-    background-color: #f2f2f2;
+    box-sizing: border-box;
+    padding: 16px;
+    border: 1px solid #ccc;
     border-radius: 8px;
-    margin: 20px;
-    padding: 10px;
-    cursor: pointer;
-    a {
-        text-decoration: none;
-    }
+    margin: 8px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .copy-btn {
-    cursor: pointer;
-    background-color: transparent;
+    padding: 8px 16px;
     border: none;
-    text-decoration: underline;
-    font-size: inherit;
-    color: #ff4800;
+    background-color: #ff4800;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
 }
 
 .order-details p {
@@ -422,7 +450,8 @@ h1 {
 }
 
 .copy-btn:hover {
-    color: #cc3a00;
+    color: white;
+    background-color: #cc3a00;
     transition: all 400ms;
 }
 
@@ -430,19 +459,18 @@ h1 {
 
 @media screen and (max-width: 768px) {
     .orders-container {
-        padding: 10px;
         width: 100%;
+        padding-left: 40px;
     }
 
     h1 {
         font-size: 20px;
+        margin-right: 30px;
+        width: fit-content;
     }
 
     .order-item {
         width: 80%;
-    }
-
-    .order-item {
         padding: 8px;
     }
 
@@ -455,7 +483,6 @@ h1 {
 .shipment-form {
     width: calc(100% - 250px);
     overflow: hidden;
-    height: 100vh;
     background-color: #f2f2f4;
 
     h1 {
@@ -542,7 +569,7 @@ h1 {
 // shipment-form
 .shipment-form {
     width: 80%;
-
+    height: 100vh;
     h1 {
         color: #ff4800;
         text-align: center;
@@ -627,6 +654,7 @@ h1 {
 
     @media screen and (max-width: 500px) {
         width: 100%;
+        height: fit-content;
 
         form {
             flex-direction: column;
@@ -666,17 +694,20 @@ h1 {
 }
 
 .select {
-    width: 93%;
-    margin-bottom: 30px;
+    width: 350px;
     flex-direction: column;
     display: flex;
     margin-top: 10px;
+    margin-left: 10px;
 
     select {
         box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
         border-radius: 5px;
-        border-color: #dc3545;
         width: 100%;
+        border: 0;
+        height: 40px;
+        border-color: #dc3545;
+        outline: none;
     }
 
     @media screen and (max-width: 500px) {
@@ -802,10 +833,13 @@ h1 {
     border-radius: 5px;
     cursor: pointer;
     z-index: 1;
-
-    a {
+    text-decoration: none;
+    
+    button {
+        background-color: transparent;
         color: white;
-        text-decoration: none;
+        border: 0;
+        outline: none;
     }
 }
 

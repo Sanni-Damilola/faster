@@ -30,10 +30,15 @@
     <div class="orders-container">
       <h1>All Orders</h1>
       <div id="orders"></div>
-      <button class="add-order-btn">
-        <a href="./createorder.html">Add Order</a>
-      </button>
+      <a class="add-order-btn" href="./createorder.html">
+        <button>Add Order</button>
+      </a>
     </div>
+
+    <div id="loading-bar">
+      <div id="loading-progress"></div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
       function toggleSidebar() {
@@ -77,8 +82,10 @@
       }
 
       async function renderOrders() {
+        showLoadingBar();
         const ordersContainer = document.getElementById("orders");
         const orders = await fetchOrders();
+        hideLoadingBar();
 
         orders?.data?.forEach((order) => {
           const orderItem = document.createElement("div");
@@ -114,18 +121,14 @@
         });
       }
 
-      function showLoading() {
-        const loadingDiv = document.createElement("div");
-        loadingDiv.id = "loading";
-        loadingDiv.textContent = "Loading...";
-        document.body.appendChild(loadingDiv);
+      function showLoadingBar() {
+        const loadingBar = document.getElementById("loading-bar");
+        loadingBar.style.display = "block";
       }
 
-      function hideLoading() {
-        const loadingDiv = document.getElementById("loading");
-        if (loadingDiv) {
-          loadingDiv.remove();
-        }
+      function hideLoadingBar() {
+        const loadingBar = document.getElementById("loading-bar");
+        loadingBar.style.display = "none";
       }
 
       function showAlert(message, type) {

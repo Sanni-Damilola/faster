@@ -26,169 +26,85 @@
         >Logout</a
       >
     </div>
+
     <div class="shipment-form">
       <h1>Shipment Update</h1>
-      <form>
+      <form id="updateForm">
         <div class="form-group">
           <label for="name">Name</label>
-          <input type="text" id="name" name="name" />
+          <input type="text" id="name" name="name" required />
         </div>
 
         <div class="form-group">
           <label for="address">Address</label>
-          <input type="text" id="address" name="address" />
-        </div>
-
-        <div class="form-group">
-          <label for="phone">Phone</label>
-          <input type="tel" id="phone" name="phone" />
+          <input type="text" id="address" name="address" required />
         </div>
 
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" id="email" name="email" />
+          <input type="email" id="email" name="email" required />
         </div>
 
         <div class="form-group">
-          <label for="origin">Origin</label>
-          <input type="text" id="origin" name="origin" />
+          <label for="bill">Bill</label>
+          <input type="text" id="bill" name="bill" required />
         </div>
 
         <div class="form-group">
-          <label for="package">Package</label>
-          <input type="text" id="package" name="package" />
-        </div>
-
-        <div class="form-group">
-          <label for="destination">Destination</label>
-          <input type="text" id="destination" name="destination" />
-        </div>
-
-        <div class="form-group">
-          <label for="carrier">Carrier</label>
-          <input type="text" id="carrier" name="carrier" />
-        </div>
-
-        <div class="form-group">
-          <label for="type-of-shipment">Type of Shipment</label>
-          <input type="text" id="type-of-shipment" name="type-of-shipment" />
-        </div>
-
-        <div class="form-group">
-          <label for="weight">Weight</label>
-          <input type="number" id="weight" name="weight" />
-        </div>
-
-        <div class="form-group">
-          <label for="shipment-mode">Shipment Mode</label>
-          <input type="text" id="shipment-mode" name="shipment-mode" />
-        </div>
-
-        <div class="form-group">
-          <label for="carrier-reference-no">Carrier Reference No</label>
+          <label for="destination-name">Destination Name</label>
           <input
             type="text"
-            id="carrier-reference-no"
-            name="carrier-reference-no"
+            id="destination-name"
+            name="destination-name"
+            required
           />
         </div>
 
         <div class="form-group">
-          <label for="product">Product</label>
-          <input type="text" id="product" name="product" />
-        </div>
-
-        <div class="form-group">
-          <label for="qty">Quantity</label>
-          <input type="number" id="qty" name="qty" />
-        </div>
-
-        <div class="form-group">
-          <label for="payment-mode">Payment Mode</label>
-          <input type="text" id="payment-mode" name="payment-mode" />
-        </div>
-
-        <div class="form-group">
-          <label for="total-freight">Total Freight</label>
-          <input type="number" id="total-freight" name="total-freight" />
-        </div>
-
-        <div class="form-group">
-          <label for="expected-delivery-date">Expected Delivery Date</label>
+          <label for="destination-address">Destination Address</label>
           <input
-            type="date"
-            id="expected-delivery-date"
-            name="expected-delivery-date"
+            type="text"
+            id="destination-address"
+            name="destination-address"
+            required
           />
         </div>
 
         <div class="form-group">
-          <label for="departure-time">Departure Time</label>
-          <input type="time" id="departure-time" name="departure-time" />
-        </div>
-
-        <div class="form-group">
-          <label for="pickup-date">Pickup Date</label>
-          <input type="date" id="pickup-date" name="pickup-date" />
-        </div>
-
-        <div class="form-group">
-          <label for="pickup-time">Pickup Time</label>
-          <input type="time" id="pickup-time" name="pickup-time" />
-        </div>
-
-        <div class="form-group">
-          <label for="comments">Comments</label>
-          <textarea id="comments" name="comments"></textarea>
-        </div>
-
-        <div class="form-group">
-          <label for="piece-type">Piece Type</label>
-          <input type="text" id="piece-type" name="piece-type" />
-        </div>
-
-        <div class="form-group">
-          <label for="description">Description</label>
-          <input type="text" id="description" name="description" />
-        </div>
-
-        <div class="form-group">
-          <label for="length">Length</label>
-          <input type="number" id="length" name="length" />
-        </div>
-
-        <div class="form-group">
-          <label for="width">Width</label>
-          <input type="number" id="width" name="width" />
-        </div>
-
-        <div class="form-group">
-          <label for="weight-kg">Weight (KG)</label>
-          <input type="number" id="weight-kg" name="weight-kg" />
-        </div>
-
-        <div class="form-group">
-          <label for="height-kg">Height (KG)</label>
-          <input type="number" id="height-kg" name="height-kg" />
+          <label for="destination-phoneno">Destination Phone No</label>
+          <input
+            type="text"
+            id="destination-phoneno"
+            name="destination-phoneno"
+            required
+          />
         </div>
 
         <div class="select">
           <label for="status">Status</label>
-          <select id="status" name="status" style="height: 47px">
+          <select id="status" name="status" required>
             <option disabled selected>Select an Update</option>
             <option value="On Transit">On Transit</option>
-            <option value="On Hold">On Hold</option>
             <option value="Delivered">Delivered</option>
             <option value="Not Delivered">Not Delivered</option>
           </select>
         </div>
 
-        <button type="submit">Submit</button>
+        <button type="submit">Update Order</button>
         <button class="delete-btn" type="button">Delete</button>
       </form>
     </div>
 
+    <div id="loading-bar" style="display: none">
+      <div id="loading-progress"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
+      if (!localStorage.getItem("userId")) {
+        window.location.href = "../404.html";
+      }
+
       function toggleSidebar() {
         const sidebar = document.getElementById("sidebar");
         sidebar.classList.toggle("sidebar-active");
@@ -196,17 +112,137 @@
 
       function setActiveLink(clickedLink) {
         const sidebarLinks = document.querySelectorAll(".sidebar a");
-
         sidebarLinks.forEach((link) => {
           link.classList.remove("active");
         });
-
         clickedLink.classList.add("active");
       }
+
       function logoutUser() {
         localStorage.removeItem("userId");
         window.location.href = "../index.html";
       }
+
+      function showLoadingBar() {
+        const loadingBar = document.getElementById("loading-bar");
+        loadingBar.style.display = "block";
+      }
+
+      function hideLoadingBar() {
+        const loadingBar = document.getElementById("loading-bar");
+        loadingBar.style.display = "none";
+      }
+
+      function showAlert(message, type) {
+        const alertDiv = document.createElement("div");
+        alertDiv.className = `alert ${type}`;
+        alertDiv.textContent = message;
+        document.body.appendChild(alertDiv);
+        setTimeout(() => {
+          alertDiv.remove();
+        }, 3000);
+      }
+      let deleteId;
+      async function fetchOrderDetails(trackingId, userId) {
+        try {
+          const response = await axios.get(
+            `https://faster-mnuk.onrender.com/api/${trackingId}`
+          );
+          deleteId = response?.data?.data?._id
+          return response?.data?.data;
+        } catch (error) {
+          console.error("Error fetching order details:", error);
+          return null;
+        }
+      }
+
+      async function updateOrder(event) {
+        event.preventDefault();
+        const form = event.target;
+
+        const trackingId = new URLSearchParams(window.location.search).get(
+          "id"
+        );
+        const userId = localStorage.getItem("userId");
+
+        const updatedOrder = {
+          NAME: form.name.value,
+          ADDRESS: form.address.value,
+          EMAIL: form.email.value,
+          BILL: form.bill.value,
+          DESTINATION_NAME: form["destination-name"].value,
+          DESTINATION_ADDRESS: form["destination-address"].value,
+          DESTINATION_PHONENO: form["destination-phoneno"].value,
+          STATUS: form.status.value,
+        };
+
+        showLoadingBar();
+
+        try {
+          const response = await axios.patch(
+            `https://faster-mnuk.onrender.com/api/${trackingId}/${userId}`,
+            updatedOrder
+          );
+          showAlert("Order updated successfully!", "success");
+        } catch (error) {
+          console.error("Error updating order:", error);
+          showAlert("Failed to update order.", "error");
+        } finally {
+          hideLoadingBar();
+        }
+      }
+
+      async function deleteOrder() {
+
+        if (confirm("Are you sure you want to delete this order?")) {
+          showLoadingBar();
+
+          try {
+            const response = await axios.delete(
+              `https://faster-mnuk.onrender.com/api/${deleteId}`
+            );
+            showAlert("Order deleted successfully!", "success");
+            window.location.href = "./allorders.html";
+          } catch (error) {
+            console.error("Error deleting order:", error);
+            showAlert("Failed to delete order.", "error");
+          } finally {
+            hideLoadingBar();
+          }
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", async () => {
+        const trackingId = new URLSearchParams(window.location.search).get(
+          "id"
+        );
+        const userId = localStorage.getItem("userId");
+
+        if (trackingId && userId) {
+          const orderDetails = await fetchOrderDetails(trackingId, userId);
+          if (orderDetails) {
+            document.getElementById("name").value = orderDetails.NAME;
+            document.getElementById("address").value = orderDetails.ADDRESS;
+            document.getElementById("email").value = orderDetails.EMAIL;
+            document.getElementById("bill").value = orderDetails.BILL;
+            document.getElementById("destination-name").value =
+              orderDetails.DESTINATION_NAME;
+            document.getElementById("destination-address").value =
+              orderDetails.DESTINATION_ADDRESS;
+            document.getElementById("destination-phoneno").value =
+              orderDetails.DESTINATION_PHONENO;
+            document.getElementById("status").value = orderDetails.STATUS;
+          }
+        }
+
+        document
+          .getElementById("updateForm")
+          .addEventListener("submit", updateOrder);
+
+        document
+          .querySelector(".delete-btn")
+          .addEventListener("click", deleteOrder);
+      });
     </script>
   </body>
 </html>
