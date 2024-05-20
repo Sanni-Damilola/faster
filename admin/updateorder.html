@@ -100,6 +100,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../env.js"></script>
     <script>
       if (!localStorage.getItem("userId")) {
         window.location.href = "../404.html";
@@ -146,9 +147,9 @@
       async function fetchOrderDetails(trackingId, userId) {
         try {
           const response = await axios.get(
-            `https://faster-mnuk.onrender.com/api/${trackingId}`
+            `${window.env.API_BASE_URL}/${trackingId}`
           );
-          deleteId = response?.data?.data?._id
+          deleteId = response?.data?.data?._id;
           return response?.data?.data;
         } catch (error) {
           console.error("Error fetching order details:", error);
@@ -180,7 +181,7 @@
 
         try {
           const response = await axios.patch(
-            `https://faster-mnuk.onrender.com/api/${trackingId}/${userId}`,
+            `${window.env.API_BASE_URL}/${trackingId}/${userId}`,
             updatedOrder
           );
           showAlert("Order updated successfully!", "success");
@@ -193,13 +194,12 @@
       }
 
       async function deleteOrder() {
-
         if (confirm("Are you sure you want to delete this order?")) {
           showLoadingBar();
 
           try {
             const response = await axios.delete(
-              `https://faster-mnuk.onrender.com/api/${deleteId}`
+              `${window.env.API_BASE_URL}/${deleteId}`
             );
             showAlert("Order deleted successfully!", "success");
             window.location.href = "./allorders.html";

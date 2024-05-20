@@ -92,6 +92,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../env.js"></script>
     <script>
       function toggleSidebar() {
         const sidebar = document.getElementById("sidebar");
@@ -148,7 +149,7 @@
 
           try {
             const response = await axios.post(
-              "https://faster-mnuk.onrender.com/api",
+              window.env.API_BASE_URL,
               formData
             );
 
