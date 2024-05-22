@@ -99,8 +99,7 @@
                 >Blogs</a
               >
               <div class="dropdown-menu rounded-0 m-0">
-                <a href="blog.html" class="dropdown-item">Main Blog</a>
-                <a href="single.html" class="dropdown-item">Detail Blog</a>
+                <a href="single.html" class="dropdown-item">Blog </a>
               </div>
             </div>
             <a href="contact.html" class="nav-item nav-link">Contact</a>
@@ -118,19 +117,25 @@
       <div class="container text-center py-5">
         <h1 class="text-primary mb-4">Safe & Faster</h1>
         <h1 class="text-white display-3 mb-5">Logistics Services</h1>
-        <div class="mx-auto" style="width: 100%; max-width: 600px">
-          <div class="input-group">
-            <input
-              type="text"
-              class="form-control border-light"
-              style="padding: 30px"
-              placeholder="Tracking Id"
-            />
-            <div class="input-group-append">
-              <button class="btn btn-primary px-3">Track & Trace</button>
+        <form onsubmit="fetchTrackingData(); return false;">
+          <div class="mx-auto" style="width: 100%; max-width: 600px">
+            <div class="input-group">
+              <input
+                type="text"
+                class="form-control border-light"
+                style="padding: 30px"
+                placeholder="Tracking Id"
+                required
+                id="trackingId"
+              />
+              <div class="input-group-append">
+                <button type="submit" class="btn btn-primary px-3">
+                  Track & Trace
+                </button>
+              </div>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </div>
     <!-- Header End -->
@@ -943,6 +948,32 @@
     <a href="#" class="btn btn-lg btn-primary back-to-top"
       ><i class="fa fa-angle-double-up"></i
     ></a>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      async function fetchTrackingData() {
+        try {
+          const inputElement = document.getElementById("trackingId");
+          const inputValue = inputElement.value.trim();
+
+          if (inputValue) {
+            const apiUrl = `https://faster-mnuk.onrender.com/api/${inputValue}`;
+            const response = await axios.get(apiUrl);
+            const data = response.data;
+
+            if (data) {
+              window.location.href = `./detail.html?id=${inputValue}`;
+            } else {
+              alert("No data found for the provided tracking ID.");
+            }
+          } else {
+            alert("Please enter a tracking ID.");
+          }
+        } catch (error) {
+          console.error("Error fetching tracking data:", error);
+          alert(error?.response?.data?.message || "An error occurred.");
+        }
+      }
+    </script>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

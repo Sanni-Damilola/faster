@@ -5,61 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Order Details</title>
     <link rel="stylesheet" href="./scss/style.css" />
+    <link href="./img/header.jpg" rel="icon" />
   </head>
   <body>
     <h1 class="ship">Shipping Information</h1>
+    <a href="./index.html" class="shipment-information-go-back"> Go Back </a>
     <div id="down" class="wrapper">
       <div class="wrap">
-        <div class="section">
+        <div id="shipperInfo" class="section">
           <h2>Shipper Information</h2>
-          <p><span>Name:</span> John Doe</p>
-          <p><span>Location:</span> New York</p>
-          <p><span>Email:</span> john.doe@example.com</p>
+          <p><span class="key">Name:</span> <span id="shipperName"></span></p>
+          <p>
+            <span class="key">Location:</span>
+            <span id="shipperLocation"></span>
+          </p>
+          <p><span class="key">Email:</span> <span id="shipperEmail"></span></p>
         </div>
 
-        <div class="section">
+        <div id="senderInfo" class="section">
           <h2>Sender Information</h2>
-          <p><span>Name:</span> Jane Smith</p>
-          <p><span>Address:</span> 123 Main St, Anytown</p>
-          <p><span>Email:</span> jane.smith@example.com</p>
+          <p>
+            <span class="key">Name:</span> <span id="senderName">****</span>
+          </p>
+          <p>
+            <span class="key">Address:</span>
+            <span id="senderAddress">****</span>
+          </p>
+          <p>
+            <span class="key">Email:</span> <span id="senderEmail">****</span>
+          </p>
         </div>
       </div>
 
-      <div class="title">SHIPMENT STATUS: Shipped</div>
+      <div class="title">
+        SHIPMENT STATUS: <span id="shipmentStatus"></span>
+      </div>
 
-      <div class="section">
+      <div id="receiverInfo" class="section">
         <h2>Receiver Information</h2>
         <div class="detail-row">
           <div class="label">Name</div>
-          <p>Michael Johnson</p>
+          <p id="receiverName"></p>
         </div>
         <div class="detail-row">
           <div class="label">Address</div>
-          <p>456 Elm St, Sometown</p>
+          <p id="receiverAddress"></p>
         </div>
         <div class="detail-row">
-          <div class="label">PhoneNo</div>
-          <p>(123) 456-7890</p>
+          <div class="label">Phone No</div>
+          <p id="receiverPhone"></p>
         </div>
         <div class="detail-row">
           <div class="label">Bill</div>
-          <p>$150.00</p>
+          <p id="receiverBill"></p>
         </div>
       </div>
 
-      <div class="section">
+      <div id="shipmentHistory" class="section">
         <h2>Shipment History</h2>
         <div class="detail-row">
           <div class="label">Date</div>
-          <p>2024-05-15</p>
+          <p id="historyDate"></p>
         </div>
         <div class="detail-row">
           <div class="label">Time</div>
-          <p>10:00 AM</p>
+          <p id="historyTime"></p>
         </div>
         <div class="detail-row">
           <div class="label">Status</div>
-          <p>Shipped</p>
+          <p id="historyStatus"></p>
         </div>
         <div class="detail-row">
           <div class="label">Updated By</div>
@@ -67,5 +81,47 @@
         </div>
       </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      async function fetchOrderDetails() {
+        try {
+          const trackingId = new URLSearchParams(window.location.search).get(
+            "id"
+          );
+
+          const apiUrl = `https://faster-mnuk.onrender.com/api/${trackingId}`;
+          const response = await axios.get(apiUrl);
+          const data = response.data.data;
+          const status = data?.ShipmentHistory?.map((e) => e.STATUS).toString();
+          const date = data?.ShipmentHistory?.map((e) => e.DATE).toString();
+          const time = data?.ShipmentHistory?.map((e) => e.TIME).toString();
+          // Populate Shipper Information
+          document.getElementById("shipperName").innerText = data.NAME;
+          document.getElementById("shipperLocation").innerText =
+            data.DESTINATION_ADDRESS;
+          document.getElementById("shipperEmail").innerText = data.EMAIL;
+
+          // // Populate Receiver Information
+          document.getElementById("receiverName").innerText =
+            data.DESTINATION_NAME;
+          document.getElementById("receiverAddress").innerText =
+            data.DESTINATION_ADDRESS;
+          document.getElementById("receiverPhone").innerText =
+            data.DESTINATION_PHONENO;
+          document.getElementById("receiverBill").innerText = `$${data.BILL}`;
+
+          // // Populate Shipment History
+          document.getElementById("historyDate").innerText = date;
+          document.getElementById("historyTime").innerText = time;
+          document.getElementById("historyStatus").innerText = status;
+        } catch (error) {
+          // alert(error?.response?.data?.message || "An error occurred.");
+        }
+      }
+
+      // Fetch order details when the page loads
+      window.onload = fetchOrderDetails;
+    </script>
   </body>
 </html>

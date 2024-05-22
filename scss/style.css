@@ -9832,6 +9832,7 @@ h1 {
   border: 1px solid #ccc;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   border-radius: 8px;
+  margin-bottom: 50px;
 }
 
 .section {
@@ -9842,15 +9843,12 @@ h1 {
   margin-bottom: 8px;
   margin-top: 10px;
   font-weight: 600;
-  color: #dc3545;
-  text-transform: uppercase;
+  color: #ff4800;
   font-size: 14px;
 }
 
 .section span {
   font-weight: 500;
-  color: #dc3545;
-  text-transform: uppercase;
   font-size: 14px;
   margin-right: 6px;
 }
@@ -9863,13 +9861,17 @@ h1 {
   border: 1px solid rgba(0, 0, 0, 0.4);
 }
 
+.key {
+  color: #ff4800;
+}
+
 .detail-row p {
   font-size: 14px;
 }
 
 .label {
   font-weight: 500;
-  color: #dc3545;
+  color: #ff4800;
   text-transform: uppercase;
   font-size: 13px;
 }
@@ -9891,5 +9893,23 @@ h1 {
 }
 
 .ship {
-  color: #dc3545;
+  color: #ff4800;
+  width: 100%;
+  text-align: center;
+}
+
+.shipment-information-go-back {
+  position: fixed;
+  top: 5%;
+  right: 5%;
+  color: white;
+  font-size: 14px;
+  border-radius: 5px;
+  padding: 7px 10px;
+  background-color: #ff4800;
+}
+
+.shipment-information-go-back:hover {
+  color: white;
+  text-decoration: none;
 }/*# sourceMappingURL=style.css.map */
