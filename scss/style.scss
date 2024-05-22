@@ -395,13 +395,16 @@ p,
     position: fixed;
     top: 0;
     left: 0;
+    display: none;
 }
+
 #loading-progress {
     width: 0;
     height: 100%;
     background: #ff4800;
     animation: load 2s infinite;
 }
+
 @keyframes load {
     0% {
         width: 0;

@@ -43,7 +43,11 @@
     <script>
       function showLoading() {
         const loadingBar = document.getElementById("loading-bar");
+        const loadingProgress = document.getElementById("loading-progress");
         loadingBar.style.display = "block";
+        loadingProgress.style.animation = "none";
+        loadingProgress.offsetHeight; 
+        loadingProgress.style.animation = ""; 
       }
 
       function hideLoading() {

@@ -82,14 +82,32 @@
       </div>
     </div>
 
+    <div id="loading-bar">
+      <div id="loading-progress"></div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
+      function showLoading() {
+        const loadingBar = document.getElementById("loading-bar");
+        const loadingProgress = document.getElementById("loading-progress");
+        loadingBar.style.display = "block";
+        loadingProgress.style.animation = "none";
+        loadingProgress.offsetHeight; 
+        loadingProgress.style.animation = ""; 
+      }
+
+      function hideLoading() {
+        const loadingBar = document.getElementById("loading-bar");
+        loadingBar.style.display = "none";
+      }
+
       async function fetchOrderDetails() {
+        showLoading();
         try {
           const trackingId = new URLSearchParams(window.location.search).get(
             "id"
           );
-
           const apiUrl = `https://faster-mnuk.onrender.com/api/${trackingId}`;
           const response = await axios.get(apiUrl);
           const data = response.data.data;
@@ -102,7 +120,7 @@
             data.DESTINATION_ADDRESS;
           document.getElementById("shipperEmail").innerText = data.EMAIL;
 
-          // // Populate Receiver Information
+          // Populate Receiver Information
           document.getElementById("receiverName").innerText =
             data.DESTINATION_NAME;
           document.getElementById("receiverAddress").innerText =
@@ -111,16 +129,17 @@
             data.DESTINATION_PHONENO;
           document.getElementById("receiverBill").innerText = `$${data.BILL}`;
 
-          // // Populate Shipment History
+          // Populate Shipment History
           document.getElementById("historyDate").innerText = date;
           document.getElementById("historyTime").innerText = time;
           document.getElementById("historyStatus").innerText = status;
         } catch (error) {
-          // alert(error?.response?.data?.message || "An error occurred.");
+          alert(error?.response?.data?.message || "An error occurred.");
+        } finally {
+          hideLoading(); 
         }
       }
 
-      // Fetch order details when the page loads
       window.onload = fetchOrderDetails;
     </script>
   </body>
