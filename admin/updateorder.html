@@ -126,12 +126,16 @@
         window.location.href = "../index.html";
       }
 
-      function showLoadingBar() {
+      function showLoading() {
         const loadingBar = document.getElementById("loading-bar");
+        const loadingProgress = document.getElementById("loading-progress");
         loadingBar.style.display = "block";
+        loadingProgress.style.animation = "none";
+        loadingProgress.offsetHeight;
+        loadingProgress.style.animation = "";
       }
 
-      function hideLoadingBar() {
+      function hideLoading() {
         const loadingBar = document.getElementById("loading-bar");
         loadingBar.style.display = "none";
       }
@@ -147,6 +151,7 @@
       }
       let deleteId;
       async function fetchOrderDetails(trackingId, userId) {
+        showLoading();
         try {
           const response = await axios.get(
             `${window.env.API_BASE_URL}/${trackingId}`
@@ -156,6 +161,8 @@
         } catch (error) {
           console.error("Error fetching order details:", error);
           return null;
+        } finally {
+          hideLoading();
         }
       }
 
@@ -178,8 +185,7 @@
           DESTINATION_PHONENO: form["destination-phoneno"].value,
           STATUS: form.status.value,
         };
-
-        showLoadingBar();
+        showLoading();
 
         try {
           const response = await axios.patch(
@@ -191,13 +197,13 @@
           console.error("Error updating order:", error);
           showAlert("Failed to update order.", "error");
         } finally {
-          hideLoadingBar();
+          hideLoading();
         }
       }
 
       async function deleteOrder() {
         if (confirm("Are you sure you want to delete this order?")) {
-          showLoadingBar();
+          showLoading();
 
           try {
             const response = await axios.delete(
@@ -209,7 +215,7 @@
             console.error("Error deleting order:", error);
             showAlert("Failed to delete order.", "error");
           } finally {
-            hideLoadingBar();
+            hideLoading();
           }
         }
       }
