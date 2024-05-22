@@ -945,11 +945,26 @@
     <!-- Footer End -->
 
     <!-- Back to Top -->
+
+    <!-- loading -->
+    <div id="loading-bar">
+      <div id="loading-progress"></div>
+    </div>
     <a href="#" class="btn btn-lg btn-primary back-to-top"
       ><i class="fa fa-angle-double-up"></i
     ></a>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
+      function showLoading() {
+        const loadingBar = document.getElementById("loading-bar");
+        loadingBar.style.display = "block";
+      }
+
+      function hideLoading() {
+        const loadingBar = document.getElementById("loading-bar");
+        loadingBar.style.display = "none";
+      }
+
       async function fetchTrackingData() {
         try {
           const inputElement = document.getElementById("trackingId");
@@ -961,6 +976,7 @@
             const data = response.data;
 
             if (data) {
+              showLoading();
               window.location.href = `./detail.html?id=${inputValue}`;
             } else {
               alert("No data found for the provided tracking ID.");
@@ -971,6 +987,8 @@
         } catch (error) {
           console.error("Error fetching tracking data:", error);
           alert(error?.response?.data?.message || "An error occurred.");
+        } finally {
+          hideLoading();
         }
       }
     </script>
